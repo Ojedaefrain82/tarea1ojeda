@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head> <!--Parte no visible del documento-->
+
+
+
+
+
+
+</head>
+
+<body> <!--Parte visible del documento-->
+<strong> <center><h1>Arquitecturas Web en Servicios</h1></center></strong> 
+<center><h3>PRACTICA Nº1 EFRAIN OJEDA REYNA</h3></center>
+<h4>Botón e input</h4>
+<button>MAPAS TEMÁTICOS DE BOLIVIA</button><!--Así se añade un botón-->
+
+
+<br>
+
+<script>
+
+
+function visualizarinfoGEOBOLIVIA(){
+
+var capa = prompt("Si desea visualizar una capa, intruduzca alguna de las opciones, ejemplos: geonode:cantones_geo, geonode:rioslimitrofes,geonode:comunidades_cna_2013")
+var ancho = prompt("Indique el valor de ancho de la imagen", "707")
+var alto= prompt("Indique el valor de alto de la imagen", "768")
+
+
+var enlace = "https://geo.gob.bo/geoserver/geonode/wms?service=WMS&version=1.1.0&request=GetMap&layers="+capa+"&bbox=-69.64650976550942%2C-22.90997996477702%2C-57.45575581073141%2C-9.67147831778228&width="+ancho+"&height="+alto+"&srs=EPSG%3A4326&styles=&format=image%2Fpng"
+
+document.getElementById("visual").href= enlace
+document.getElementById("visual").src= enlace
+
+}
+
+
+function desplegablenacional() {
+
+var capanacional = document.getElementById("desplegablenacional").value
+var formato = document.getElementById("formatos").value
+
+var enlacereg = "https://geo.gob.bo/geoserver/ows?service=WFS&acceptversions=2.0.0&request=GetFeature&typename=geonode:cantones_geo&outputformat=kml
+document.getElementById("descargareg").href= enlacereg
+}
+
+
+</script>
+
+
+<button type="button" onclick ="visualizarinfoIGM()" style="width:400;height:100; text-size:100px">VISUALIZACIÓN INFORMACIÓN</button>
+
+<img id="visual" src="">
+<br><br><br>
+
+<img src= "https://geo.gob.bo/geoserver/geonode/wms?service=WMS&version=1.1.0&request=GetMap&layers=geonode%3Acantones_geo&bbox=-69.64650976550942%2C-22.90997996477702%2C-57.45575581073141%2C-9.67147831778228&width=707&height=768&srs=EPSG%3A4326&styles=&format=image%2Fpng" alt="Limite Departamental y Cantones">
+<img src= "https://geo.gob.bo/geoserver/geonode/wms?service=WMS&version=1.1.0&request=GetMap&layers=geonode%3Arioslimitrofes&bbox=-69.57258467109428%2C-22.908030029625625%2C-57.22181080560945%2C-9.65460959425246&width=715&height=768&srs=EPSG%3A4326&styles=&format=image%2Fpng" alt="Limite de Rios">
+<img src= "https://geo.gob.bo/geoserver/geonode/wms?service=WMS&version=1.1.0&request=GetMap&layers=geonode%3Acomunidades_cna_2013&bbox=-69.55567629786928%2C-22.851619012759542%2C-57.56432176680011%2C-9.678152677022453&width=699&height=768&srs=EPSG%3A4326&styles=&format=image%2Fpng" alt="Poblaciones de Bolivia">
+
+
+<br><br><br>
+
+<select id="desplegablenacional" onchange="desplegablenacional()" >
+<option value="geonode:cantones">Cantones
+<option value="geonode:rioslimitrofes">Rios Limitrofes
+<option value="geonode:comunidades_cna_2013">Comunidades
+</select>
+
+<br><br>
+<select id="formatos" onchange="desplegablenacional()" >
+<option value="shape-zip">Shapefile
+<option value="GML2">GML
+<option value="KML">KML
+
+</select>
+
+<br><br><br>
+<a id="descargareg" href="" >Descargue aquí</a>
+
+<br><br><br>
+<a href= "" target = "_blank">Cantones</a>
+<a href= "" target = "_blank">Rios</a>
+<a href= "" target = "_blank">Comunidades</a>
+
+<br><br><br>
+
+<a href= "https://geo.gob.bo/geoserver/ows?service=WFS&acceptversions=2.0.0&request=GetFeature&typename=geonode:cantones_geo&outputformat=kml" target = "_blank">
+<img src= "https://png.pngtree.com/png-clipart/20230211/ourmid/pngtree-red-download-buttons-icons-transparent-images-png-image_6593963.png" alt="Descargar Limites Departamentales de Bolivia" style="width:50px;height:50px;"> 
+</a>
+
+<a href= "https://geo.gob.bo/geoserver/ows?service=WFS&acceptversions=2.0.0&request=GetFeature&typename=geonode:rioslimitrofes&outputformat=kml" target = "_blank">
+<img src= "https://w7.pngwing.com/pngs/815/854/png-transparent-button-gold-golden-yellow-arrow-down-thumbnail.png" alt="Descargar Limites Departamentales de Bolivia" style="width:50px;height:50px;"> 
+</a>
+
+<a href= "https://geo.gob.bo/geoserver/ows?service=WFS&acceptversions=2.0.0&request=GetFeature&typename=geonode:comunidades_cna_2013&outputformat=kml" target = "_blank">
+<img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB0kSXfkz2p2RuGhcvHfNd0cnHPks9Czdaw&s" alt="Descargar Limites Departamentales de Bolivia" style="width:50px;height:50px;"> 
+</a>
+
+</body>
+
+
+</html>
